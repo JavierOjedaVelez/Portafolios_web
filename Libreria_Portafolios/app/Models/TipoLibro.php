@@ -11,5 +11,6 @@ class TipoLibro extends Model
     use HasFactory;
 
     protected $table = "tipo_libros";
+    protected $primaryKey = "id_tipo_libro";
 
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\LibroCollection;
+use App\Http\Resources\LibroResource;
 use App\Models\Libro;
 use App\Http\Requests\StoreLibroRequest;
 use App\Http\Requests\UpdateLibroRequest;
@@ -13,7 +15,9 @@ class LibroController extends Controller
      */
     public function index()
     {
-        //
+        $libros = Libro::paginate(10);
+
+        return new LibroCollection($libros);
     }
 
     /**
@@ -37,7 +41,7 @@ class LibroController extends Controller
      */
     public function show(Libro $libro)
     {
-        //
+        return new LibroResource($libro);
     }
 
     /**

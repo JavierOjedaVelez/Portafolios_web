@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\AutorCollection;
+use App\Http\Resources\AutorResource;
 use App\Models\Autor;
 use App\Http\Requests\StoreAutorRequest;
 use App\Http\Requests\UpdateAutorRequest;
@@ -13,7 +15,9 @@ class AutorController extends Controller
      */
     public function index()
     {
-        //
+        $autores = Autor::paginate(10);
+
+        return new AutorCollection($autores);
     }
 
     /**
@@ -35,9 +39,11 @@ class AutorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Autor $autor)
+    public function show($id)
     {
-        //
+
+        $autor = Autor::where('id_autor', $id)->first();
+        return new AutorResource($autor);
     }
 
     /**

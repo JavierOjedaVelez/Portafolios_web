@@ -12,4 +12,6 @@ class Detalle_Pedido extends Model
 
     protected $table = "detalle_pedidos";
 
+    protected $primaryKey = "id_detalle_pedido";
+
 }

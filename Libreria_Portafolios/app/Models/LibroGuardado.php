@@ -11,5 +11,6 @@ class LibroGuardado extends Model
     use HasFactory;
 
     protected $table = "libro_guardados";
+    protected $primaryKey = "id_libros_guardados";
 
 }

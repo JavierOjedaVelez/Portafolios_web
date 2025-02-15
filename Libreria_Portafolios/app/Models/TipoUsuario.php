@@ -12,6 +12,6 @@ class TipoUsuario extends Model
 
     protected $table = "tipo_usuarios";
 
-    
+    protected $primaryKey = "id_tipo_usuario";
 
 }

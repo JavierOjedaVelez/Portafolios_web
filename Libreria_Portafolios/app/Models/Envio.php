@@ -12,4 +12,6 @@ class Envio extends Model
 
     protected $table = "envios";
 
+    protected $primaryKey = "id_envio";
+
 }

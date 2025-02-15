@@ -12,4 +12,6 @@ class PerfilUsuario extends Model
 
     protected $table = "perfil_usuarios";
 
+    protected $primaryKey = "id_perfil";
+
 }

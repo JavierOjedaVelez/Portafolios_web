@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CarritoCollection;
+use App\Http\Resources\CarritoResource;
 use App\Models\Carrito;
 use App\Http\Requests\StoreCarritoRequest;
 use App\Http\Requests\UpdateCarritoRequest;
@@ -13,7 +15,8 @@ class CarritoController extends Controller
      */
     public function index()
     {
-        //
+        $carritos = Carrito::paginate(10);
+        return new CarritoCollection($carritos);
     }
 
     /**
@@ -37,7 +40,7 @@ class CarritoController extends Controller
      */
     public function show(Carrito $carrito)
     {
-        //
+        return new CarritoResource($carrito);
     }
 
     /**

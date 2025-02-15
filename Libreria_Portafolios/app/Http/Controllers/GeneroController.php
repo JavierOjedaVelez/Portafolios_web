@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GeneroCollection;
+use App\Http\Resources\GeneroResource;
 use App\Models\Genero;
 use App\Http\Requests\StoreGeneroRequest;
 use App\Http\Requests\UpdateGeneroRequest;
@@ -13,7 +15,9 @@ class GeneroController extends Controller
      */
     public function index()
     {
-        //
+        $generos = Genero::paginate(10);
+
+        return new GeneroCollection($generos);
     }
 
     /**
@@ -37,7 +41,7 @@ class GeneroController extends Controller
      */
     public function show(Genero $genero)
     {
-        //
+        return new GeneroResource($genero);
     }
 
     /**

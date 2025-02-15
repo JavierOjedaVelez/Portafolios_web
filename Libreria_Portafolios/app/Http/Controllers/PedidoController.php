@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PedidoCollection;
+use App\Http\Resources\PedidoResource;
 use App\Models\Pedido;
 use App\Http\Requests\StorePedidoRequest;
 use App\Http\Requests\UpdatePedidoRequest;
@@ -13,7 +15,9 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
+        $pedidos = Pedido::paginate(10);
+
+        return new PedidoCollection($pedidos);
     }
 
     /**
@@ -37,7 +41,7 @@ class PedidoController extends Controller
      */
     public function show(Pedido $pedido)
     {
-        //
+        return new PedidoResource($pedido);
     }
 
     /**

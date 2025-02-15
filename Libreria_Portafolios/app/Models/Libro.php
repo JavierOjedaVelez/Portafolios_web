@@ -11,5 +11,6 @@ class Libro extends Model
     use HasFactory;
 
     protected $table = "libros";
+    protected $primaryKey = "isbn";
 
 }

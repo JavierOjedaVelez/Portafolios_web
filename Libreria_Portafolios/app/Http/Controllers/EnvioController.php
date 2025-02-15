@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EnvioCollection;
+use App\Http\Resources\EnvioResource;
 use App\Models\Envio;
 use App\Http\Requests\StoreEnvioRequest;
 use App\Http\Requests\UpdateEnvioRequest;
@@ -13,7 +15,9 @@ class EnvioController extends Controller
      */
     public function index()
     {
-        //
+        $envios = Envio::paginate(10);
+
+        return new EnvioCollection($envios);
     }
 
     /**
@@ -37,7 +41,7 @@ class EnvioController extends Controller
      */
     public function show(Envio $envio)
     {
-        //
+        return new EnvioResource($envio);
     }
 
     /**

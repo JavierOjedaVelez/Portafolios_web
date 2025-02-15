@@ -12,4 +12,6 @@ class Usuario extends Model
 
     protected $table = "usuarios";
 
+    protected $primaryKey = 'id_usuario';
+
 }

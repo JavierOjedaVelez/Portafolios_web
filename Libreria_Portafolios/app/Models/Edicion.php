@@ -12,4 +12,6 @@ class Edicion extends Model
 
     protected $table = "ediciones";
 
+    protected $primaryKey = "id_edicion";
+
 }

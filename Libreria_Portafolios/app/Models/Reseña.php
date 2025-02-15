@@ -12,4 +12,6 @@ class Reseña extends Model
 
     protected $table = "reseñas";
 
+    protected $primaryKey = "id_reseña";
+
 }

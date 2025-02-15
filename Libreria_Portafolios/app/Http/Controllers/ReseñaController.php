@@ -2,22 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\UsuarioCollection;
-use App\Http\Resources\UsuarioResource;
-use App\Models\Usuario;
-use App\Http\Requests\StoreUsuarioRequest;
-use App\Http\Requests\UpdateUsuarioRequest;
+use App\Http\Resources\ReseñaCollection;
+use App\Http\Resources\ReseñaResource;
+use App\Models\Reseña;
+use Illuminate\Http\Request;
 
-class UsuarioController extends Controller
+class ReseñaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $usuarios = Usuario::paginate(10);
+        $reseñas = Reseña::paginate(10);
 
-        return new UsuarioCollection($usuarios);
+        return new ReseñaCollection($reseñas);
     }
 
     /**
@@ -31,7 +30,7 @@ class UsuarioController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUsuarioRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -39,15 +38,17 @@ class UsuarioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Usuario $usuario)
+    public function show( $id)
     {
-        return new UsuarioResource($usuario);
+        $reseña = Reseña::where('id_reseña', $id)->first();
+
+        return new ReseñaResource($reseña);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Usuario $usuario)
+    public function edit(string $id)
     {
         //
     }
@@ -55,7 +56,7 @@ class UsuarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUsuarioRequest $request, Usuario $usuario)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -63,7 +64,7 @@ class UsuarioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Usuario $usuario)
+    public function destroy(string $id)
     {
         //
     }

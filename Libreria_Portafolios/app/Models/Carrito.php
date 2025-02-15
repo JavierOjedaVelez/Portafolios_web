@@ -11,5 +11,6 @@ class Carrito extends Model
     use HasFactory;
 
     protected $table = "carritos";
+    protected $primaryKey = "id_carrito";
 
 }

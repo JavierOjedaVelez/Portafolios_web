@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\LibroGuardadoCollection;
+use App\Http\Resources\LibroGuardadoResource;
 use App\Models\LibroGuardado;
 use App\Http\Requests\StoreLibroGuardadoRequest;
 use App\Http\Requests\UpdateLibroGuardadoRequest;
@@ -13,7 +15,9 @@ class LibroGuardadoController extends Controller
      */
     public function index()
     {
-        //
+        $libros = LibroGuardado::paginate(10);
+
+        return new LibroGuardadoCollection($libros);
     }
 
     /**
@@ -35,9 +39,11 @@ class LibroGuardadoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(LibroGuardado $libroGuardado)
+    public function show($id)
     {
-        //
+
+        $libroGuardado = LibroGuardado::where('id_libros_guardados',$id)->first();
+        return new LibroGuardadoResource($libroGuardado);
     }
 
     /**

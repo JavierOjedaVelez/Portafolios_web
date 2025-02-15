@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PerfilUsuarioCollection;
+use App\Http\Resources\PerfilUsuarioResource;
 use App\Models\PerfilUsuario;
 use App\Http\Requests\StorePerfilUsuarioRequest;
 use App\Http\Requests\UpdatePerfilUsuarioRequest;
@@ -13,7 +15,9 @@ class PerfilUsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $perfiles = PerfilUsuario::paginate(10);
+
+        return new PerfilUsuarioCollection($perfiles);
     }
 
     /**
@@ -35,9 +39,11 @@ class PerfilUsuarioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PerfilUsuario $perfilUsuario)
+    public function show($id)
     {
-        //
+
+        $perfilUsuario = PerfilUsuario::where("id_perfil", $id)->first();
+        return new PerfilUsuarioResource($perfilUsuario);
     }
 
     /**

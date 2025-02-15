@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CuponCollection;
+use App\Http\Resources\CuponResource;
 use App\Models\Cupon;
 use App\Http\Requests\StoreCuponRequest;
 use App\Http\Requests\UpdateCuponRequest;
@@ -13,7 +15,9 @@ class CuponController extends Controller
      */
     public function index()
     {
-        //
+        $cupones = Cupon::paginate(10);
+
+        return new CuponCollection($cupones);
     }
 
     /**
@@ -35,9 +39,11 @@ class CuponController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Cupon $cupon)
+    public function show($id)
     {
-        //
+
+        $cupon = Cupon::where('id_cupon', $id)->first();
+        return new CuponResource($cupon);
     }
 
     /**

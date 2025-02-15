@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TipoLibroCollection;
+use App\Http\Resources\TipoLibroResource;
 use App\Models\TipoLibro;
 use App\Http\Requests\StoreTipoLibroRequest;
 use App\Http\Requests\UpdateTipoLibroRequest;
@@ -13,7 +15,9 @@ class TipoLibroController extends Controller
      */
     public function index()
     {
-        //
+        $tipos = TipoLibro::paginate(10);
+
+        return new TipoLibroCollection($tipos);
     }
 
     /**
@@ -35,9 +39,11 @@ class TipoLibroController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TipoLibro $tipoLibro)
+    public function show($id)
     {
-        //
+
+        $tipoLibro = TipoLibro::where('id_tipo_libro', $id)->first();
+        return new TipoLibroResource($tipoLibro);
     }
 
     /**

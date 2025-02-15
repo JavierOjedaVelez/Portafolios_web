@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EdicionCollection;
+use App\Http\Resources\EdicionResource;
 use App\Models\Edicion;
 use App\Http\Requests\StoreEdicionRequest;
 use App\Http\Requests\UpdateEdicionRequest;
@@ -13,7 +15,9 @@ class EdicionController extends Controller
      */
     public function index()
     {
-        //
+        $edicion = Edicion::paginate(10);
+
+        return new EdicionCollection($edicion);
     }
 
     /**
@@ -35,9 +39,11 @@ class EdicionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Edicion $edicion)
+    public function show($id)
     {
-        //
+
+        $edicion = Edicion::where('id_edicion', $id)->first();
+        return new EdicionResource($edicion);
     }
 
     /**
