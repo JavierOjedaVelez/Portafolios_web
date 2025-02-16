@@ -11,7 +11,7 @@ class UpdateLibroRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class UpdateLibroRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'titulo' => ['sometimes','required'],
+            'precio' => ['sometimes','required'],
+            'stock' => ['sometimes','required'],
+            'sinopsis' => ['sometimes','required'],
+            'portada' => ['sometimes','required'],
+            'fecha_publicacion' => ['sometimes','required'],
+            'id_tipo_libro' => ['sometimes','required'],
+            'id_edicion' => ['sometimes','required']
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreReseñaRequest;
+use App\Http\Requests\UpdateReseñaRequest;
 use App\Http\Resources\ReseñaCollection;
 use App\Http\Resources\ReseñaResource;
 use App\Models\Reseña;
@@ -30,9 +32,9 @@ class ReseñaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreReseñaRequest $request)
     {
-        //
+        return new ReseñaResource(Reseña::create($request->all()));
     }
 
     /**
@@ -56,16 +58,19 @@ class ReseñaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateReseñaRequest $request, $id)
     {
-        //
+        $reseña = Reseña::where('id_reseña', $id)->first();
+        $reseña->update($request->all());
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( $id)
     {
-        //
+        $reseña = Reseña::where('id_reseña', $id)->first();
+        $reseña->delete();
     }
 }

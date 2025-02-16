@@ -11,7 +11,7 @@ class UpdateEnvioRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateEnvioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "id_pedido" => ['sometimes', 'required'],
+            "metodo_envio" => ['sometimes','required'],
+            "codigo_seguimiento"  => ['sometimes','required'],
+            "fecha_envio"  => ['sometimes','required'],
+            "fecha_entrega_estimada" => ['sometimes','required']
         ];
     }
 }

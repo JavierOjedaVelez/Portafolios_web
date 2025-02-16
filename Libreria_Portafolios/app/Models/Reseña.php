@@ -13,5 +13,21 @@ class Reseña extends Model
     protected $table = "reseñas";
 
     protected $primaryKey = "id_reseña";
+    protected $fillable = [
+        'id_usuario',
+        'isbn',
+        'puntuacion',
+        'comentario'
+    ];
+
+
+    public function Libros(){
+        return $this->belongsTo(Libro::class, 'isbn');
+    }
+
+    public function Usuarios()
+    {
+        return $this->belongsTo(Usuario::class, 'id_usuario');
+    }
 
 }

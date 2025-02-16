@@ -33,7 +33,7 @@ class DetallePedidoController extends Controller
      */
     public function store(StoreDetalle_PedidoRequest $request)
     {
-        //
+        return new DetallePedidoResource(Detalle_Pedido::create($request->all()));
     }
 
     /**
@@ -58,16 +58,21 @@ class DetallePedidoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDetalle_PedidoRequest $request, Detalle_Pedido $detalle_Pedido)
+    public function update(UpdateDetalle_PedidoRequest $request, $id)
     {
-        //
+        $detalle_Pedido = Detalle_Pedido::where('id_detalle_pedido', $id)->first();
+
+        $detalle_Pedido->update($request->all());
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Detalle_Pedido $detalle_Pedido)
+    public function destroy($id)
     {
-        //
+        $detalle_Pedido = Detalle_Pedido::where('id_detalle_pedido', $id)->first();
+
+        $detalle_Pedido->delete();
     }
 }

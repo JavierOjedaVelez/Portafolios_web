@@ -11,7 +11,7 @@ class UpdateCarritoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateCarritoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "id_usuario" => ['sometimes','required'],
+            "isbn" => ['sometimes','required'],
+            "cantidad" => ['sometimes','required']
         ];
     }
 }

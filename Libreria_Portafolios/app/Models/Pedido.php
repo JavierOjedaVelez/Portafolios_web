@@ -13,4 +13,19 @@ class Pedido extends Model
     protected $table = "pedidos";
     protected $primaryKey = "id_pedido";
 
+    protected $fillable = [
+        'id_usuario',
+        'total',
+        'fecha_pedido',
+        'estado'
+    ];
+
+
+    public function Libros(){
+        return $this->belongsToMany(Libro::class, 'pedido_libros', 'id_pedido', 'isbn');
+    }
+
+    public function Usuarios(){
+        return $this->belongsTo(Usuario::class, 'id_usuario');
+    }
 }

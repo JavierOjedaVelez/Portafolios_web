@@ -12,5 +12,10 @@ class TipoLibro extends Model
 
     protected $table = "tipo_libros";
     protected $primaryKey = "id_tipo_libro";
+    protected $fillable = ['nombre'];
+
+    public function Libros(){
+        return $this->hasMany(Libro::class);
+    }
 
 }

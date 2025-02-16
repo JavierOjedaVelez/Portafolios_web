@@ -13,4 +13,14 @@ class Autor extends Model
     protected $table = "autores";
 
     protected $primaryKey = "id_autor";
+
+    protected $fillable =[
+        'nombre',
+        'biografia',
+        'fecha_nacimiento'
+    ];
+
+    public function libros(){
+        return $this->belongsToMany(Libro::class, 'libro_autor', 'id_autor', 'isbn');
+    }
 }

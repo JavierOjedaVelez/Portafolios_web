@@ -33,7 +33,7 @@ class PedidoController extends Controller
      */
     public function store(StorePedidoRequest $request)
     {
-        //
+        return new PedidoResource(Pedido::create($request->all()));
     }
 
     /**
@@ -57,7 +57,7 @@ class PedidoController extends Controller
      */
     public function update(UpdatePedidoRequest $request, Pedido $pedido)
     {
-        //
+        $pedido->update($request->all());
     }
 
     /**
@@ -65,6 +65,6 @@ class PedidoController extends Controller
      */
     public function destroy(Pedido $pedido)
     {
-        //
+        $pedido->delete();
     }
 }

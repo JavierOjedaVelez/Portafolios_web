@@ -32,7 +32,7 @@ class CarritoController extends Controller
      */
     public function store(StoreCarritoRequest $request)
     {
-        //
+        return new CarritoResource(Carrito::create($request->all()));
     }
 
     /**
@@ -48,7 +48,7 @@ class CarritoController extends Controller
      */
     public function edit(Carrito $carrito)
     {
-        //
+
     }
 
     /**
@@ -56,7 +56,7 @@ class CarritoController extends Controller
      */
     public function update(UpdateCarritoRequest $request, Carrito $carrito)
     {
-        //
+        $carrito->update($request->all());
     }
 
     /**
@@ -64,6 +64,6 @@ class CarritoController extends Controller
      */
     public function destroy(Carrito $carrito)
     {
-        //
+        $carrito->delete();
     }
 }

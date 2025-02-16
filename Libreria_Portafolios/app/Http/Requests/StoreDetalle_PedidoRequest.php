@@ -11,7 +11,7 @@ class StoreDetalle_PedidoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StoreDetalle_PedidoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id_pedido' => ['required'],
+            'isbn' => ['required'],
+            'cantidad' => ['required'],
+            'precio_unitario' => ['required']
         ];
     }
 }

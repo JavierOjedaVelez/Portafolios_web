@@ -11,7 +11,7 @@ class UpdatePedidoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdatePedidoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id_usuario' => ['sometimes','required'],
+            'total' => ['sometimes','required'],
+            'fecha_pedido' => ['sometimes','required'],
+            'estado' => ['sometimes','required']
         ];
     }
 }

@@ -11,7 +11,7 @@ class StoreCuponRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreCuponRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "codigo" => ['required'],
+            "descuento" => ['required'],
+            "fecha_expiracion" => ['required']
         ];
     }
 }

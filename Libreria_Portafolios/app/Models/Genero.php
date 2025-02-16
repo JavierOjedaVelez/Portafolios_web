@@ -12,5 +12,13 @@ class Genero extends Model
 
     protected $table = "generos";
     protected $primaryKey = "id_genero";
+    protected $fillable = [
+        'nombre'
+    ];
+
+
+    public function Libros(){
+        return $this->belongsToMany('libro_genero', 'id_generos', 'isbn');
+    }
 
 }

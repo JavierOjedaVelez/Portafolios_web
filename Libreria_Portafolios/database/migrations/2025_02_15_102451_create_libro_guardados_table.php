@@ -17,6 +17,8 @@ return new class extends Migration
             $table->date('fecha_guardado');
             $table->timestamps();
 
+            $table->foreign('isbn')->references('isbn')->on('libros')->onDelete('cascade');
+
         });
     }
 

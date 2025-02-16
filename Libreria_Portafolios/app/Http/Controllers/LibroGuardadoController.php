@@ -33,7 +33,7 @@ class LibroGuardadoController extends Controller
      */
     public function store(StoreLibroGuardadoRequest $request)
     {
-        //
+        return new LibroGuardadoResource(LibroGuardado::create($request->all()));
     }
 
     /**
@@ -57,16 +57,19 @@ class LibroGuardadoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLibroGuardadoRequest $request, LibroGuardado $libroGuardado)
+    public function update(UpdateLibroGuardadoRequest $request,$id)
     {
-        //
+        $libroGuardado = LibroGuardado::where('id_libros_guardados',$id)->first();
+        $libroGuardado->update($request->all());
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(LibroGuardado $libroGuardado)
+    public function destroy($id)
     {
-        //
+        $libroGuardado = LibroGuardado::where('id_libros_guardados',$id)->first();
+        $libroGuardado->delete();
+
     }
 }

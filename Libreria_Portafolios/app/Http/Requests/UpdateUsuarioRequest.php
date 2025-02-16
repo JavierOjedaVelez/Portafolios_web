@@ -11,7 +11,7 @@ class UpdateUsuarioRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateUsuarioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'email' => ['sometimes','required'],
+            'password' => ['sometimes','required'],
+            'fecha_registro' => ['sometimes','required'],
+            'id_tipo_usuario' => ['sometimes','required'],
+            'baneado' => ['sometimes','required']
         ];
     }
 }

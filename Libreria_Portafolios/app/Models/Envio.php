@@ -14,4 +14,17 @@ class Envio extends Model
 
     protected $primaryKey = "id_envio";
 
+    protected $fillable = [
+        "id_pedido",
+        "metodo_envio",
+        "codigo_seguimiento",
+        "fecha_envio",
+        "fecha_entrega_estimada"
+
+    ];
+
+    public function Pedidos(){
+        return $this->belongsTo(Pedido::class, 'id_pedido');
+    }
+
 }

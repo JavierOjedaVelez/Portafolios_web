@@ -33,7 +33,7 @@ class PerfilUsuarioController extends Controller
      */
     public function store(StorePerfilUsuarioRequest $request)
     {
-        //
+        return new PerfilUsuarioResource(PerfilUsuario::create($request->all()));
     }
 
     /**
@@ -57,16 +57,19 @@ class PerfilUsuarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePerfilUsuarioRequest $request, PerfilUsuario $perfilUsuario)
+    public function update(UpdatePerfilUsuarioRequest $request,$id)
     {
-        //
+        $perfilUsuario = PerfilUsuario::where("id_perfil", $id)->first();
+
+        $perfilUsuario->update($request->all());
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PerfilUsuario $perfilUsuario)
+    public function destroy($id)
     {
-        //
+        $perfilUsuario = PerfilUsuario::where("id_perfil", $id)->first();
+        $perfilUsuario->delete();
     }
 }

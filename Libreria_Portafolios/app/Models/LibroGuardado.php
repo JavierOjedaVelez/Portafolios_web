@@ -12,5 +12,18 @@ class LibroGuardado extends Model
 
     protected $table = "libro_guardados";
     protected $primaryKey = "id_libros_guardados";
+    protected $fillable = [
+        'isbn',
+        'fecha_guardado'
+    ];
+
+
+    public function Libros(){
+        return $this->belongsTo(Libro::class, 'isbn');
+    }
+
+    public function Usuarios(){
+        return $this->belongsToMany(Usuario::class, 'usuario_libro_guardados', 'id_libro_guardado', 'id_usuario');
+    }
 
 }

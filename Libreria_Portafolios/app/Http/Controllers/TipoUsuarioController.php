@@ -33,7 +33,8 @@ class TipoUsuarioController extends Controller
      */
     public function store(StoreTipoUsuarioRequest $request)
     {
-        //
+        return new TipoUsuarioResource(TipoUsuario::create($request->all()));
+
     }
 
     /**
@@ -59,16 +60,21 @@ class TipoUsuarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTipoUsuarioRequest $request, TipoUsuario $tipoUsuario)
+    public function update(UpdateTipoUsuarioRequest $request, $id)
     {
-        //
+        $tipoUsuario = TipoUsuario::where('id_tipo_usuario', $id)->first();
+
+        $tipoUsuario->update($request->all());
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TipoUsuario $tipoUsuario)
+    public function destroy($id)
     {
-        //
+        $tipoUsuario = TipoUsuario::where('id_tipo_usuario', $id)->first();
+
+        $tipoUsuario->delete();
+
     }
 }

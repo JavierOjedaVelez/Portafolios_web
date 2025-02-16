@@ -33,7 +33,7 @@ class TipoLibroController extends Controller
      */
     public function store(StoreTipoLibroRequest $request)
     {
-        //
+        return new TipoLibroResource(TipoLibro::create($request->all()));
     }
 
     /**
@@ -57,16 +57,20 @@ class TipoLibroController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTipoLibroRequest $request, TipoLibro $tipoLibro)
+    public function update(UpdateTipoLibroRequest $request, $id)
     {
-        //
+        $tipoLibro = TipoLibro::where('id_tipo_libro', $id)->first();
+
+        $tipoLibro->update($request->all());
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TipoLibro $tipoLibro)
+    public function destroy($id)
     {
-        //
+        $tipoLibro = TipoLibro::where('id_tipo_libro', $id)->first();
+        $tipoLibro->delete();
+
     }
 }

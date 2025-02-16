@@ -14,4 +14,10 @@ class Cupon extends Model
 
     protected $primaryKey = "id_cupon";
 
+    protected $fillable = [
+        "codigo",
+        "descuento",
+        "fecha_expiracion"
+    ];
+
 }

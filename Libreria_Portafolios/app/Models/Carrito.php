@@ -12,5 +12,10 @@ class Carrito extends Model
 
     protected $table = "carritos";
     protected $primaryKey = "id_carrito";
+    protected $fillable = [
+        'id_usuario',
+        'isbn',
+        'cantidad'
+    ];
 
 }

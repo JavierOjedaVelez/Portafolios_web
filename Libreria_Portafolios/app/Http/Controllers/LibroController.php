@@ -33,7 +33,7 @@ class LibroController extends Controller
      */
     public function store(StoreLibroRequest $request)
     {
-        //
+        return new LibroResource(Libro::create($request->all()));
     }
 
     /**
@@ -57,7 +57,7 @@ class LibroController extends Controller
      */
     public function update(UpdateLibroRequest $request, Libro $libro)
     {
-        //
+        $libro->update($request->all());
     }
 
     /**
@@ -65,6 +65,6 @@ class LibroController extends Controller
      */
     public function destroy(Libro $libro)
     {
-        //
+        $libro->delete();
     }
 }

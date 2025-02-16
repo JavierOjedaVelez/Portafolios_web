@@ -11,7 +11,7 @@ class UpdateAutorRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateAutorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "nombre" => ['sometimes','required'],
+            "biografia" => ['sometimes','required'],
+            "fecha_nacimiento" => ['sometimes','required']
         ];
     }
 }

@@ -11,7 +11,7 @@ class UpdateLibroGuardadoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateLibroGuardadoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'isbn' => ['sometimes','required'],
+            'fecha_guardado'=> ['sometimes','required']
         ];
     }
 }

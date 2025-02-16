@@ -11,7 +11,7 @@ class StoreEnvioRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class StoreEnvioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "id_pedido" => ['required'],
+            "metodo_envio" => ['required'],
+            "codigo_seguimiento"  => ['required'],
+            "fecha_envio"  => ['required'],
+            "fecha_entrega_estimada" => ['required']
         ];
     }
 }

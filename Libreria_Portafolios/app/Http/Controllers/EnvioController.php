@@ -33,7 +33,7 @@ class EnvioController extends Controller
      */
     public function store(StoreEnvioRequest $request)
     {
-        //
+        return new EnvioResource(Envio::create($request->all()));
     }
 
     /**
@@ -57,7 +57,7 @@ class EnvioController extends Controller
      */
     public function update(UpdateEnvioRequest $request, Envio $envio)
     {
-        //
+        $envio->update($request->all());
     }
 
     /**
@@ -65,6 +65,6 @@ class EnvioController extends Controller
      */
     public function destroy(Envio $envio)
     {
-        //
+        $envio->delete();
     }
 }

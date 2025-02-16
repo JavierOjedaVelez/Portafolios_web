@@ -14,4 +14,20 @@ class Detalle_Pedido extends Model
 
     protected $primaryKey = "id_detalle_pedido";
 
+    protected $fillable = [
+        'id_pedido',
+        'isbn',
+        'cantidad',
+        'precio_unitario'
+    ];
+
+
+    public function Pedidos(){
+        return $this->belongsTo(Pedido::class, 'id_pedido');
+    }
+
+    public function Libros(){
+        return $this->belongsTo(Libro::class, 'isbn');
+    }
+
 }

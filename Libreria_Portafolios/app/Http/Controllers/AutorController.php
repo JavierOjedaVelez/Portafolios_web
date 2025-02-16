@@ -33,7 +33,7 @@ class AutorController extends Controller
      */
     public function store(StoreAutorRequest $request)
     {
-        //
+        return new AutorResource(Autor::create($request->all()));
     }
 
     /**
@@ -51,22 +51,25 @@ class AutorController extends Controller
      */
     public function edit(Autor $autor)
     {
-        //
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAutorRequest $request, Autor $autor)
+    public function update(UpdateAutorRequest $request,$id)
     {
-        //
+        $autor = Autor::where('id_autor', $id)->first();
+        $autor->update($request->all());
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Autor $autor)
+    public function destroy($id)
     {
-        //
+        $autor = Autor::where('id_autor', $id)->first();
+
+        $autor->delete();
     }
 }

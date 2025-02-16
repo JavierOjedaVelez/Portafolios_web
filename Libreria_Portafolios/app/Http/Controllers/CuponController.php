@@ -33,7 +33,7 @@ class CuponController extends Controller
      */
     public function store(StoreCuponRequest $request)
     {
-        //
+        return new CuponResource(Cupon::create($request->all()));
     }
 
     /**
@@ -57,16 +57,20 @@ class CuponController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCuponRequest $request, Cupon $cupon)
+    public function update(UpdateCuponRequest $request, $id)
     {
-        //
+        $cupon = Cupon::where('id_cupon',$id)->first();
+
+        $cupon->update($request->all());
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cupon $cupon)
+    public function destroy($id)
     {
-        //
+        $cupon = Cupon::where('id_cupon',$id)->first();
+
+        $cupon->delete();
     }
 }

@@ -33,7 +33,7 @@ class EdicionController extends Controller
      */
     public function store(StoreEdicionRequest $request)
     {
-        //
+        return new EdicionResource(Edicion::create($request->all()));
     }
 
     /**
@@ -57,16 +57,21 @@ class EdicionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEdicionRequest $request, Edicion $edicion)
+    public function update(UpdateEdicionRequest $request, $id)
     {
-        //
+        $edicion = Edicion::where('id_edicion', $id)->first();
+
+        $edicion->update($request->all());
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Edicion $edicion)
+    public function destroy($id)
     {
-        //
+        $edicion = Edicion::where('id_edicion', $id)->first();
+
+        $edicion->delete();
     }
 }

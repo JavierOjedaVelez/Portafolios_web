@@ -33,7 +33,7 @@ class GeneroController extends Controller
      */
     public function store(StoreGeneroRequest $request)
     {
-        //
+        return new GeneroResource(Genero::create($request->all()));
     }
 
     /**
@@ -57,7 +57,7 @@ class GeneroController extends Controller
      */
     public function update(UpdateGeneroRequest $request, Genero $genero)
     {
-        //
+        $genero->update($request->all());
     }
 
     /**
@@ -65,6 +65,6 @@ class GeneroController extends Controller
      */
     public function destroy(Genero $genero)
     {
-        //
+        $genero->delete();
     }
 }

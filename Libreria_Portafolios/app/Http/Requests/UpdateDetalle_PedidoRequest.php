@@ -11,7 +11,7 @@ class UpdateDetalle_PedidoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateDetalle_PedidoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id_pedido' => ['sometimes','required'],
+            'isbn' => ['sometimes','required'],
+            'cantidad' => ['sometimes','required'],
+            'precio_unitario' => ['sometimes','required']
         ];
     }
 }
