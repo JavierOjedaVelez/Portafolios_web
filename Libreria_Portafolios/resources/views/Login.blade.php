@@ -29,11 +29,15 @@
                     </form>
                     <div class="mt-3 text-center">
                         <a href="#">¿Olvidaste tu contraseña?</a>
+                        <a href="{{route("principal")}}">Volver al inicio</a>
                     </div>
                 </div>
             </div>
         </div>
+
+
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

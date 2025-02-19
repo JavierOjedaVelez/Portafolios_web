@@ -42,7 +42,9 @@
             </div>
             <button type="submit" class="btn btn-primary w-100">Registrarse</button>
         </form>
+
     </div>
+    <a href="{{route("principal")}}">Volver al inicio</a>
 
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>

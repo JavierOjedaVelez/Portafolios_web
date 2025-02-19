@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <script type="text/javascript" src="{{asset('Front/funciones.js')}}"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Librería</title>
 </head>
 <body>

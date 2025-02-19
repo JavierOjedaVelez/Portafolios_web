@@ -11,6 +11,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#" onclick="indexLibros()">Libros</a>
             </li>
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="userOptions" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Opciones de usuario
@@ -24,6 +25,36 @@
                     <a class="dropdown-item" href="#" onclick="logout()">Cerrar sesión</a>
                     @endif
                 </div>
+
+
+            </li>
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userOptions" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Añadir...
+                </a>
+                <div class="dropdown-menu" aria-labelledby="userOptions">
+                    <a class="dropdown-item" href="{{route('libros.create')}}">añadir libro</a>
+
+                </div>
+
+
+            </li>
+
+
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userOptions" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Listar...
+                </a>
+                <div class="dropdown-menu" aria-labelledby="userOptions">
+                    <a class="dropdown-item" onclick="indexTipolibros()">Listar tipos de libros</a>
+                    <a class="dropdown-item" onclick="indexUsuarios()">Listar usuarios</a>
+
+                </div>
+
+
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
