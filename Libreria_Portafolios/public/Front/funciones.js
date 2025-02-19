@@ -503,3 +503,622 @@ function crearTablausuarios(usuarios) {
     });
     return tabla;
 }
+
+async function indexTipousuarios() {
+    fetch('/api/v1/tipousuarios')
+        .then(response =>{
+            if(!response.ok){
+                throw new Error("Error de servidor");
+            }
+            return response.json();
+    })
+
+    .then(tipos =>{
+
+        if(tipos.data.length <= 0){
+            const contenido = document.getElementById("contenido");
+            contenido.innerHTML = "";
+
+            const message = document.createElement("p");
+            message.innerHTML = "No hay tipos";
+
+            contenido.appendChild(message);
+        }else{
+             const contenido = document.getElementById("contenido");
+
+             contenido.innerHTML = "";
+
+             const tablalibros = crearTablaTipos(tipos.data);
+             contenido.appendChild(tablalibros);
+
+             const a = document.createElement("a")
+             a.href = "#"
+            a.innerHTML = "volver"
+
+             a.onclick = function(){
+                limpiarContenido();
+             }
+
+             contenido.appendChild(a);
+        }
+    }).catch(error =>{
+        console.error("Error al cargar los libros:", error);
+    })
+}
+
+
+async function indexEdicion() {
+    fetch('/api/v1/ediciones')
+        .then(response =>{
+            if(!response.ok){
+                throw new Error("Error de servidor");
+            }
+            return response.json();
+    })
+
+    .then(ediciones =>{
+
+        if(ediciones.data.length <= 0){
+            const contenido = document.getElementById("contenido");
+            contenido.innerHTML = "";
+
+            const message = document.createElement("p");
+            message.innerHTML = "No hay ediciones";
+
+            contenido.appendChild(message);
+        }else{
+             const contenido = document.getElementById("contenido");
+
+             contenido.innerHTML = "";
+
+             const tablaediciones = crearTablaTipos(ediciones.data);
+             contenido.appendChild(tablaediciones);
+
+             const a = document.createElement("a")
+             a.href = "#"
+            a.innerHTML = "volver"
+
+             a.onclick = function(){
+                limpiarContenido();
+             }
+
+             contenido.appendChild(a);
+        }
+    }).catch(error =>{
+        console.error("Error al cargar los libros:", error);
+    })
+}
+
+
+async function indexGenero() {
+    fetch('/api/v1/generos')
+        .then(response =>{
+            if(!response.ok){
+                throw new Error("Error de servidor");
+            }
+            return response.json();
+    })
+
+    .then(generos =>{
+
+        if(generos.data.length <= 0){
+            const contenido = document.getElementById("contenido");
+            contenido.innerHTML = "";
+
+            const message = document.createElement("p");
+            message.innerHTML = "No hay generos";
+
+            contenido.appendChild(message);
+        }else{
+             const contenido = document.getElementById("contenido");
+
+             contenido.innerHTML = "";
+
+             const tablageneros = crearTablaTipos(generos.data);
+             contenido.appendChild(tablageneros);
+
+             const a = document.createElement("a")
+             a.href = "#"
+            a.innerHTML = "volver"
+
+             a.onclick = function(){
+                limpiarContenido();
+             }
+
+             contenido.appendChild(a);
+        }
+    }).catch(error =>{
+        console.error("Error al cargar los libros:", error);
+    })
+}
+
+async function indexPerfiles() {
+    fetch('/api/v1/perfiles')
+        .then(response =>{
+            if(!response.ok){
+                throw new Error("Error de servidor");
+            }
+            return response.json();
+    })
+
+    .then(perfiles =>{
+
+        if(perfiles.data.length <= 0){
+            const contenido = document.getElementById("contenido");
+            contenido.innerHTML = "";
+
+            const message = document.createElement("p");
+            message.innerHTML = "No hay perfiles";
+
+            contenido.appendChild(message);
+        }else{
+             const contenido = document.getElementById("contenido");
+
+             contenido.innerHTML = "";
+
+             const tablalibros = crearTablaperfiles(perfiles.data);
+             contenido.appendChild(tablalibros);
+
+             const a = document.createElement("a")
+             a.href = "#"
+            a.innerHTML = "volver"
+
+             a.onclick = function(){
+                limpiarContenido();
+             }
+
+             contenido.appendChild(a);
+        }
+    }).catch(error =>{
+        console.error("Error al cargar los libros:", error);
+    })
+}
+
+function crearTablaperfiles(perfiles) {
+    const tabla = document.createElement("table");
+    tabla.setAttribute('class', 'table');
+    const cabecera = crearFilaTipo(['ID', 'NOMBRE', 'DIRECCION', 'TELEFONO', 'FOTO DE PERFIL'], "th");
+    cabecera.setAttribute('scope','col');
+    tabla.appendChild(cabecera);
+
+
+    perfiles.forEach(perfil=> {
+              const fila = crearFilaTipo([perfil['id'], perfil['nombre'], perfil['direccion'], perfil['telefono'], perfil['foto_perfil']], "td");
+        tabla.appendChild(fila);
+
+
+
+
+    });
+    return tabla;
+}
+
+async function indexAutores() {
+    fetch('/api/v1/autores')
+        .then(response =>{
+            if(!response.ok){
+                throw new Error("Error de servidor");
+            }
+            return response.json();
+    })
+
+    .then(autores =>{
+
+        if(autores.data.length <= 0){
+            const contenido = document.getElementById("contenido");
+            contenido.innerHTML = "";
+
+            const message = document.createElement("p");
+            message.innerHTML = "No hay autores";
+
+            contenido.appendChild(message);
+        }else{
+             const contenido = document.getElementById("contenido");
+
+             contenido.innerHTML = "";
+
+             const tablalibros = crearTablaautores(autores.data);
+             contenido.appendChild(tablalibros);
+
+             const a = document.createElement("a")
+             a.href = "#"
+            a.innerHTML = "volver"
+
+             a.onclick = function(){
+                limpiarContenido();
+             }
+
+             contenido.appendChild(a);
+        }
+    }).catch(error =>{
+        console.error("Error al cargar los libros:", error);
+    })
+}
+
+function crearTablaautores(autores) {
+    const tabla = document.createElement("table");
+    tabla.setAttribute('class', 'table');
+    const cabecera = crearFilaTipo(['ID', 'NOMBRE', 'BIOGRAFIA', 'FECHA DE NACIMIENTO'], "th");
+    cabecera.setAttribute('scope','col');
+    tabla.appendChild(cabecera);
+
+
+    autores.forEach(autor=> {
+              const fila = crearFilaTipo([autor['id'], autor['Nombre'], autor['Biografia'], autor['Fecha de nacimiento']], "td");
+        tabla.appendChild(fila);
+
+
+
+
+    });
+    return tabla;
+}
+
+async function indexPedidos() {
+    fetch('/api/v1/pedidos')
+        .then(response =>{
+            if(!response.ok){
+                throw new Error("Error de servidor");
+            }
+            return response.json();
+    })
+
+    .then(pedidos =>{
+
+        if(pedidos.data.length <= 0){
+            const contenido = document.getElementById("contenido");
+            contenido.innerHTML = "";
+
+            const message = document.createElement("p");
+            message.innerHTML = "No hay pedidos";
+
+            contenido.appendChild(message);
+        }else{
+             const contenido = document.getElementById("contenido");
+
+             contenido.innerHTML = "";
+
+             const tablalibros = crearTablapedidos(pedidos.data);
+             contenido.appendChild(tablalibros);
+
+             const a = document.createElement("a")
+             a.href = "#"
+            a.innerHTML = "volver"
+
+             a.onclick = function(){
+                limpiarContenido();
+             }
+
+             contenido.appendChild(a);
+        }
+    }).catch(error =>{
+        console.error("Error al cargar los libros:", error);
+    })
+}
+
+function crearTablapedidos(pedidos) {
+    const tabla = document.createElement("table");
+    tabla.setAttribute('class', 'table');
+    const cabecera = crearFilaTipo(['ID', 'TOTAL', 'FECHA DE PEDIDO', 'ESTADO'], "th");
+    cabecera.setAttribute('scope','col');
+    tabla.appendChild(cabecera);
+
+
+    pedidos.forEach(pedido=> {
+              const fila = crearFilaTipo([pedido['id'], pedido['total'], pedido['fecha_pedido'], pedido['estado']], "td");
+        tabla.appendChild(fila);
+
+
+
+
+    });
+    return tabla;
+}
+
+
+async function indexCupones() {
+    fetch('/api/v1/cupones')
+        .then(response =>{
+            if(!response.ok){
+                throw new Error("Error de servidor");
+            }
+            return response.json();
+    })
+
+    .then(cupones =>{
+
+        if(cupones.data.length <= 0){
+            const contenido = document.getElementById("contenido");
+            contenido.innerHTML = "";
+
+            const message = document.createElement("p");
+            message.innerHTML = "No hay cupones";
+
+            contenido.appendChild(message);
+        }else{
+             const contenido = document.getElementById("contenido");
+
+             contenido.innerHTML = "";
+
+             const tablalibros = crearTablacupones(cupones.data);
+             contenido.appendChild(tablalibros);
+
+             const a = document.createElement("a")
+             a.href = "#"
+            a.innerHTML = "volver"
+
+             a.onclick = function(){
+                limpiarContenido();
+             }
+
+             contenido.appendChild(a);
+        }
+    }).catch(error =>{
+        console.error("Error al cargar los cupones:", error);
+    })
+}
+
+function crearTablacupones(cupones) {
+    const tabla = document.createElement("table");
+    tabla.setAttribute('class', 'table');
+    const cabecera = crearFilaTipo(['ID', 'CODIGO', 'DESCUENTO', 'FECHA DE EXPIRACION'], "th");
+    cabecera.setAttribute('scope','col');
+    tabla.appendChild(cabecera);
+
+
+    cupones.forEach(cupon=> {
+              const fila = crearFilaTipo([cupon['id'], cupon['codigo'], cupon['descuento'], cupon['fecha_expiracion']], "td");
+        tabla.appendChild(fila);
+
+
+
+
+    });
+    return tabla;
+}
+
+async function indexDetalles() {
+    fetch('/api/v1/detalles')
+        .then(response =>{
+            if(!response.ok){
+                throw new Error("Error de servidor");
+            }
+            return response.json();
+    })
+
+    .then(detalles =>{
+
+        if(detalles.data.length <= 0){
+            const contenido = document.getElementById("contenido");
+            contenido.innerHTML = "";
+
+            const message = document.createElement("p");
+            message.innerHTML = "No hay detalles";
+
+            contenido.appendChild(message);
+        }else{
+             const contenido = document.getElementById("contenido");
+
+             contenido.innerHTML = "";
+
+             const tablalibros = crearTabladetalles(detalles.data);
+             contenido.appendChild(tablalibros);
+
+             const a = document.createElement("a")
+             a.href = "#"
+            a.innerHTML = "volver"
+
+             a.onclick = function(){
+                limpiarContenido();
+             }
+
+             contenido.appendChild(a);
+        }
+    }).catch(error =>{
+        console.error("Error al cargar los detalles:", error);
+    })
+}
+
+function crearTabladetalles(detalles) {
+    const tabla = document.createElement("table");
+    tabla.setAttribute('class', 'table');
+    const cabecera = crearFilaTipo(['ID', 'CANTIDAD', 'PRECIO UNITARIO'], "th");
+    cabecera.setAttribute('scope','col');
+    tabla.appendChild(cabecera);
+
+
+    detalles.forEach(detalle=> {
+              const fila = crearFilaTipo([detalle['id'], detalle['cantidad'], detalle['precio_unitario']], "td");
+        tabla.appendChild(fila);
+
+
+
+
+    });
+    return tabla;
+}
+
+async function indexReseña() {
+    fetch('/api/v1/reseñas')
+        .then(response =>{
+            if(!response.ok){
+                throw new Error("Error de servidor");
+            }
+            return response.json();
+    })
+
+    .then(reseñas =>{
+
+        if(reseñas.data.length <= 0){
+            const contenido = document.getElementById("contenido");
+            contenido.innerHTML = "";
+
+            const message = document.createElement("p");
+            message.innerHTML = "No hay reseñas";
+
+            contenido.appendChild(message);
+        }else{
+             const contenido = document.getElementById("contenido");
+
+             contenido.innerHTML = "";
+
+             const tablalibros = crearTablasreseñas(reseñas.data);
+             contenido.appendChild(tablalibros);
+
+             const a = document.createElement("a")
+             a.href = "#"
+            a.innerHTML = "volver"
+
+             a.onclick = function(){
+                limpiarContenido();
+             }
+
+             contenido.appendChild(a);
+        }
+    }).catch(error =>{
+        console.error("Error al cargar los reseñas:", error);
+    })
+}
+
+function crearTablasreseñas(reseñas) {
+    const tabla = document.createElement("table");
+    tabla.setAttribute('class', 'table');
+    const cabecera = crearFilaTipo(['ID', 'PUNTUACION', 'COMENTARIO'], "th");
+    cabecera.setAttribute('scope','col');
+    tabla.appendChild(cabecera);
+
+
+    reseñas.forEach(reseña=> {
+              const fila = crearFilaTipo([reseña['id'], reseña['puntuacion'], reseña['comentario']], "td");
+        tabla.appendChild(fila);
+
+
+
+
+    });
+    return tabla;
+}
+
+async function indexLibrosguardados() {
+    fetch('/api/v1/librosguardados')
+        .then(response =>{
+            if(!response.ok){
+                throw new Error("Error de servidor");
+            }
+            return response.json();
+    })
+
+    .then(librosguardados =>{
+
+        if(librosguardados.data.length <= 0){
+            const contenido = document.getElementById("contenido");
+            contenido.innerHTML = "";
+
+            const message = document.createElement("p");
+            message.innerHTML = "No hay librosguardados";
+
+            contenido.appendChild(message);
+        }else{
+             const contenido = document.getElementById("contenido");
+
+             contenido.innerHTML = "";
+
+             const tablalibros = crearTablaslibrosGuardados(librosguardados.data);
+             contenido.appendChild(tablalibros);
+
+             const a = document.createElement("a")
+             a.href = "#"
+            a.innerHTML = "volver"
+
+             a.onclick = function(){
+                limpiarContenido();
+             }
+
+             contenido.appendChild(a);
+        }
+    }).catch(error =>{
+        console.error("Error al cargar los librosguardados:", error);
+    })
+}
+
+function crearTablaslibrosGuardados(librosguardados) {
+    const tabla = document.createElement("table");
+    tabla.setAttribute('class', 'table');
+    const cabecera = crearFilaTipo(['ID'], "th");
+    cabecera.setAttribute('scope','col');
+    tabla.appendChild(cabecera);
+
+
+    librosguardados.forEach(libro=> {
+              const fila = crearFilaTipo([libro['id']], "td");
+        tabla.appendChild(fila);
+
+
+
+
+    });
+    return tabla;
+}
+
+
+async function indexEnvios() {
+    fetch('/api/v1/envios')
+        .then(response =>{
+            if(!response.ok){
+                throw new Error("Error de servidor");
+            }
+            return response.json();
+    })
+
+    .then(envios =>{
+
+        if(envios.data.length <= 0){
+            const contenido = document.getElementById("contenido");
+            contenido.innerHTML = "";
+
+            const message = document.createElement("p");
+            message.innerHTML = "No hay envios";
+
+            contenido.appendChild(message);
+        }else{
+             const contenido = document.getElementById("contenido");
+
+             contenido.innerHTML = "";
+
+             const tablalibros = crearTablasenvios(envios.data);
+             contenido.appendChild(tablalibros);
+
+             const a = document.createElement("a")
+             a.href = "#"
+            a.innerHTML = "volver"
+
+             a.onclick = function(){
+                limpiarContenido();
+             }
+
+             contenido.appendChild(a);
+        }
+    }).catch(error =>{
+        console.error("Error al cargar los envios:", error);
+    })
+}
+
+function crearTablasenvios(envios) {
+    const tabla = document.createElement("table");
+    tabla.setAttribute('class', 'table');
+    const cabecera = crearFilaTipo(['ID', 'METODO DE ENVIO', 'CODIGO DE SEGUIMIENTO', 'FECHA DE ENVIO', 'FECHA DE ENTREGA ESTIMADA'], "th");
+    cabecera.setAttribute('scope','col');
+    tabla.appendChild(cabecera);
+
+
+    envios.forEach(envio=> {
+              const fila = crearFilaTipo([envio['id'], envio['metodo_envio'], envio['codigo_seguimiento'], envio['fecha_envio'], envio['fecha_entrega_estimada']], "td");
+        tabla.appendChild(fila);
+
+
+
+
+    });
+    return tabla;
+}
+

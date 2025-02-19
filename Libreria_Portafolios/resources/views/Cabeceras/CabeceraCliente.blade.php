@@ -50,7 +50,22 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="userOptions">
                     <a class="dropdown-item" onclick="indexTipolibros()">Listar tipos de libros</a>
+                    <a class="dropdown-item" onclick="indexTipousuarios()">Listar tipos de usuarios</a>
                     <a class="dropdown-item" onclick="indexUsuarios()">Listar usuarios</a>
+                    <a class="dropdown-item" onclick="indexEdicion()">Listar ediciones</a>
+                    <a class="dropdown-item" onclick="indexGenero()">Listar generos</a>
+                    <a class="dropdown-item" onclick="indexPerfiles()">Listar perfiles</a>
+                    <a class="dropdown-item" onclick="indexAutores()">Listar autores</a>
+                    <a class="dropdown-item" onclick="indexPedidos()">Listar pedidos</a>
+                    <a class="dropdown-item" onclick="indexCupones()">Listar cupones</a>
+                    <a class="dropdown-item" onclick="indexDetalles()">Listar detalles de pedidos</a>
+                    <a class="dropdown-item" onclick="indexReseña()">Listar reseñas</a>
+                    <a class="dropdown-item" onclick="indexLibrosguardados()">Listar libros guardados por los usuarios</a>
+                    <a class="dropdown-item" onclick="indexEnvios()">Listar envios</a>
+
+
+
+
 
                 </div>
 
