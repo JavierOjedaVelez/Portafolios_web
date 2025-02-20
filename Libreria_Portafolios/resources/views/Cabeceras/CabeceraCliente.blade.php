@@ -36,6 +36,32 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="userOptions">
                     <a class="dropdown-item" href="{{route('libros.create')}}">añadir libro</a>
+                    <a class="dropdown-item" href="{{route('tipolibros.create')}}">añadir tipo libro</a>
+                    <a class="dropdown-item" href="{{route('tipousuarios.create')}}">añadir tipo usuarios</a>
+                    <a class="dropdown-item" href="{{route('usuarios.create')}}">añadir usuario</a>
+                    <a class="dropdown-item" href="{{route('reseñas.create')}}">añadir reseña</a>
+                    <a class="dropdown-item" href="{{route('perfiles.create')}}">añadir perfiles</a>
+                    <a class="dropdown-item" href="{{route('pedidos.create')}}">añadir pedido</a>
+                    <a class="dropdown-item" href="{{route('librosguardados.create')}}">añadir libro guardado</a>
+                    <a class="dropdown-item" href="{{route('generos.create')}}">añadir genero</a>
+                    <a class="dropdown-item" href="{{route('envios.create')}}">añadir envio</a>
+                    <a class="dropdown-item" href="{{route('ediciones.create')}}">añadir edicion</a>
+                    <a class="dropdown-item" href="{{route('detalles.create')}}">añadir detalles de pedido</a>
+                    <a class="dropdown-item" href="{{route('cupones.create')}}">añadir cupon</a>
+                    <a class="dropdown-item" href="{{route('autores.create')}}">añadir autores</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 </div>
 

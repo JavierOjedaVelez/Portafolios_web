@@ -398,6 +398,10 @@ function crearTablaTipos(tipos) {
 
     tipos.forEach(tipo=> {
               const fila = crearFilaTipo([tipo['id'], tipo['nombre']], "td");
+              fila.addEventListener("click", function() {
+                window.location.href = `/tipolibros/${tipo.id}/vista`;
+            });
+
         tabla.appendChild(fila);
 
 
@@ -406,6 +410,54 @@ function crearTablaTipos(tipos) {
     });
     return tabla;
 }
+
+function crearTablaedicion(tipos) {
+    const tabla = document.createElement("table");
+    tabla.setAttribute('class', 'table');
+    const cabecera = crearFilaTipo(['ID', 'NOMBRE'], "th");
+    cabecera.setAttribute('scope','col');
+    tabla.appendChild(cabecera);
+
+
+    tipos.forEach(tipo=> {
+              const fila = crearFilaTipo([tipo['id'], tipo['nombre']], "td");
+              fila.addEventListener("click", function() {
+                window.location.href = `/ediciones/${tipo.id}/vista`;
+            });
+
+        tabla.appendChild(fila);
+
+
+
+
+    });
+    return tabla;
+}
+
+function crearTablaGenero(generos) {
+    const tabla = document.createElement("table");
+    tabla.setAttribute("class", "table");
+
+    const cabecera = crearFilaTipo(["ID", "NOMBRE"], "th");
+    tabla.appendChild(cabecera);
+
+    generos.forEach(genero => {
+        const fila = crearFilaTipo([genero.id, genero.nombre], "td");
+
+        // Agregar evento de clic para redirigir a la vista
+        fila.addEventListener("click", function() {
+            window.location.href = `/generos/${genero.id}/vista`;
+        });
+
+        tabla.appendChild(fila);
+    });
+
+    return tabla;
+}
+
+
+
+
 
 
 function crearFilaTipo(campos, tipo) {
@@ -495,7 +547,10 @@ function crearTablausuarios(usuarios) {
 
     usuarios.forEach(usuario=> {
               const fila = crearFilaTipo([usuario['id'], usuario['email'], usuario['fecha de registro']], "td");
-        tabla.appendChild(fila);
+              fila.addEventListener("click", function() {
+                window.location.href = `/usuarios/${usuario.id}/vista`;
+            });
+              tabla.appendChild(fila);
 
 
 
@@ -528,7 +583,7 @@ async function indexTipousuarios() {
 
              contenido.innerHTML = "";
 
-             const tablalibros = crearTablaTipos(tipos.data);
+             const tablalibros = crearTablaTiposUsuarios(tipos.data);
              contenido.appendChild(tablalibros);
 
              const a = document.createElement("a")
@@ -571,7 +626,7 @@ async function indexEdicion() {
 
              contenido.innerHTML = "";
 
-             const tablaediciones = crearTablaTipos(ediciones.data);
+             const tablaediciones = crearTablaedicion(ediciones.data);
              contenido.appendChild(tablaediciones);
 
              const a = document.createElement("a")
@@ -614,7 +669,7 @@ async function indexGenero() {
 
              contenido.innerHTML = "";
 
-             const tablageneros = crearTablaTipos(generos.data);
+             const tablageneros = crearTablaGenero(generos.data);
              contenido.appendChild(tablageneros);
 
              const a = document.createElement("a")
@@ -673,17 +728,20 @@ async function indexPerfiles() {
         console.error("Error al cargar los libros:", error);
     })
 }
-
 function crearTablaperfiles(perfiles) {
     const tabla = document.createElement("table");
     tabla.setAttribute('class', 'table');
-    const cabecera = crearFilaTipo(['ID', 'NOMBRE', 'DIRECCION', 'TELEFONO', 'FOTO DE PERFIL'], "th");
+    const cabecera = crearFilaTipo(['ID', 'NOMBRE', 'DIRECCION', 'TELEFONO', 'FOTO DE PERFIL', 'ACCIONES'], "th");
     cabecera.setAttribute('scope','col');
     tabla.appendChild(cabecera);
 
 
     perfiles.forEach(perfil=> {
-              const fila = crearFilaTipo([perfil['id'], perfil['nombre'], perfil['direccion'], perfil['telefono'], perfil['foto_perfil']], "td");
+        const fila = crearFilaTipo([perfil['id'], perfil['nombre'], perfil['direccion'], perfil['telefono'], perfil['foto_perfil']], "td");
+        fila.addEventListener("click", function() {
+            window.location.href = `/perfiles/${perfil.id}/vista`;
+        });
+
         tabla.appendChild(fila);
 
 
@@ -745,7 +803,11 @@ function crearTablaautores(autores) {
 
     autores.forEach(autor=> {
               const fila = crearFilaTipo([autor['id'], autor['Nombre'], autor['Biografia'], autor['Fecha de nacimiento']], "td");
-        tabla.appendChild(fila);
+              fila.addEventListener("click", function() {
+                window.location.href = `/autores/${autor.id}/vista`;
+            });
+
+              tabla.appendChild(fila);
 
 
 
@@ -806,7 +868,10 @@ function crearTablapedidos(pedidos) {
 
     pedidos.forEach(pedido=> {
               const fila = crearFilaTipo([pedido['id'], pedido['total'], pedido['fecha_pedido'], pedido['estado']], "td");
-        tabla.appendChild(fila);
+              fila.addEventListener("click", function() {
+                window.location.href = `/pedidos/${pedido.id}/vista`;
+            });
+              tabla.appendChild(fila);
 
 
 
@@ -868,7 +933,10 @@ function crearTablacupones(cupones) {
 
     cupones.forEach(cupon=> {
               const fila = crearFilaTipo([cupon['id'], cupon['codigo'], cupon['descuento'], cupon['fecha_expiracion']], "td");
-        tabla.appendChild(fila);
+              fila.addEventListener("click", function() {
+                window.location.href = `/cupones/${cupon.id}/vista`;
+            });
+              tabla.appendChild(fila);
 
 
 
@@ -929,7 +997,10 @@ function crearTabladetalles(detalles) {
 
     detalles.forEach(detalle=> {
               const fila = crearFilaTipo([detalle['id'], detalle['cantidad'], detalle['precio_unitario']], "td");
-        tabla.appendChild(fila);
+              fila.addEventListener("click", function() {
+                window.location.href = `/detalles/${detalle.id}/vista`;
+            });
+              tabla.appendChild(fila);
 
 
 
@@ -990,7 +1061,10 @@ function crearTablasreseñas(reseñas) {
 
     reseñas.forEach(reseña=> {
               const fila = crearFilaTipo([reseña['id'], reseña['puntuacion'], reseña['comentario']], "td");
-        tabla.appendChild(fila);
+              fila.addEventListener("click", function() {
+                window.location.href = `/reseñas/${reseña.id}/vista`;
+            });
+              tabla.appendChild(fila);
 
 
 
@@ -1112,7 +1186,33 @@ function crearTablasenvios(envios) {
 
 
     envios.forEach(envio=> {
-              const fila = crearFilaTipo([envio['id'], envio['metodo_envio'], envio['codigo_seguimiento'], envio['fecha_envio'], envio['fecha_entrega_estimada']], "td");
+            const fila = crearFilaTipo([envio['id'], envio['metodo_envio'], envio['codigo_seguimiento'], envio['fecha_envio'], envio['fecha_entrega_estimada']], "td");
+            fila.addEventListener("click", function() {
+                window.location.href = `/envios/${envio.id}/vista`;
+            });
+            tabla.appendChild(fila);
+
+
+
+
+    });
+    return tabla;
+}
+
+function crearTablaTiposUsuarios(tipos) {
+    const tabla = document.createElement("table");
+    tabla.setAttribute('class', 'table');
+    const cabecera = crearFilaTipo(['ID', 'NOMBRE'], "th");
+    cabecera.setAttribute('scope','col');
+    tabla.appendChild(cabecera);
+
+
+    tipos.forEach(tipo=> {
+              const fila = crearFilaTipo([tipo['id'], tipo['nombre']], "td");
+              fila.addEventListener("click", function() {
+                window.location.href = `/tipousuarios/${tipo.id}/vista`;
+            });
+
         tabla.appendChild(fila);
 
 
@@ -1121,4 +1221,5 @@ function crearTablasenvios(envios) {
     });
     return tabla;
 }
+
 
